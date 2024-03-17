@@ -1,0 +1,9 @@
+﻿@using HelpDesk_TestMVC.Controllers
+@{
+    //ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <a href="@Url.Action(nameof(EmployeeController.Index), "Employee")"><p>Employee<p></a>
+</div>
