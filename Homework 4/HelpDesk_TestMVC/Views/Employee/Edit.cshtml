@@ -16,21 +16,21 @@
 	<!-- Employee's first name -->
 	<div class="row">
 		<div class="col">
-			@Html.LabelFor(model => model.FirstName, new { @class = "form-label m-2" })
-			@Html.TextBoxFor(model => model.FirstName, new { @class = "form-control" })
+			@Html.LabelFor(m => m.FirstName, new { @class = "form-label m-2" })
+			@Html.TextBoxFor(m => m.FirstName, new { @class = "form-control" })
 		</div>
 
 		<!-- Employee's last name -->
 		<div class="col">
-			@Html.LabelFor(model => model.LastName, new { @class = "form-label m-2" })
-			@Html.TextBoxFor(model => model.LastName, new { @class = "form-control" })
+			@Html.LabelFor(m => m.LastName, new { @class = "form-label m-2" })
+			@Html.TextBoxFor(m => m.LastName, new { @class = "form-control" })
 		</div>
 	</div>
 
 	//Position
 	<div class="form-group">
-		@Html.LabelFor(model => model.Post, new { @class = "form-label m-2" })
-		@Html.DropDownListFor(model => model.Post,
+		@Html.LabelFor(m => m.Post, new { @class = "form-label m-2" })
+		@Html.DropDownListFor(m => m.Post,
 				Html.GetEnumSelectList<PostEnum>(),
 				null,
 				new { @class = "form-select" })
@@ -38,14 +38,14 @@
 
 	//Eployee's email
 	<div class="form-group">
-		@Html.LabelFor(model => model.Email, new { @class = "form-label m-2" })
-		@Html.TextAreaFor(model => model.Email, new { @class = "form-control" })
+		@Html.LabelFor(m => m.Email, new { @class = "form-label m-2" })
+		@Html.TextAreaFor(m => m.Email, new { @class = "form-control" })
 	</div>
 
 	//Eployee's skills
 	<div class="form-group">
-		@Html.LabelFor(model => model.Skills, new { @class = "form-label m-2" })
-		@Html.TextAreaFor(model => model.Skills, new { @class = "form-control" })
+		@Html.LabelFor(m => m.Skills, new { @class = "form-label m-2" })
+		@Html.TextAreaFor(m => m.Skills, new { @class = "form-control" })
 	</div>
 
 	//submit button
