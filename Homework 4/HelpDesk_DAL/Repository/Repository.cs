@@ -33,12 +33,13 @@ namespace HelpDesk_DAL.Repository
             return _dbSet.AsQueryable().AsNoTracking();
         }
 
-        public async Task<TEntity> InsertOrUpdate(
+        public TEntity InsertOrUpdate(
             Expression<Func<TEntity, bool>> predicate,
             TEntity entity
         ){
-            var entityExists = await _dbSet.AnyAsync(predicate);
-            if (entityExists)
+            var entityExists = _dbSet.Any(predicate);
+
+			if (entityExists)
             {
                 return _dbSet.Update(entity).Entity;
             }

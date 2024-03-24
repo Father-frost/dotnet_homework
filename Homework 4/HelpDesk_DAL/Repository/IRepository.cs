@@ -24,7 +24,7 @@ namespace HelpDesk_DAL.Repository
         /// </summary>
         IQueryable<TEntity> AsReadOnlyQueryable();
 
-        Task<TEntity> InsertOrUpdate(
+        TEntity InsertOrUpdate(
             Expression<Func<TEntity, bool>> predicate,
             TEntity entity
         );
