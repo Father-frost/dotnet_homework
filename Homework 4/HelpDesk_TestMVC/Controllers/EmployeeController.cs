@@ -1,13 +1,11 @@
 ﻿using HelpDesk_BLL.Contracts.Identity;
 using HelpDesk_DomainModel.Models.Identity;
-using HelpDesk_TestMVC.Models;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 
 namespace HelpDesk_TestMVC.Controllers
 {
-    public class EmployeeController : Controller
+	public class EmployeeController : Controller
     {
 		private IEmployeeService _employeeService;
 		public EmployeeController(IEmployeeService employeeService)
