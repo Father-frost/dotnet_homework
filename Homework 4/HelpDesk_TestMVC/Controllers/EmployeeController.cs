@@ -9,9 +9,6 @@ namespace HelpDesk_TestMVC.Controllers
 {
     public class EmployeeController : Controller
     {
-
-        static List<Employee> Employees = new List<Employee>();
-
 		private IEmployeeService _employeeService;
 		public EmployeeController(IEmployeeService employeeService)
 		{
@@ -60,7 +57,7 @@ namespace HelpDesk_TestMVC.Controllers
 
             try
             {
-                var employee = _employeeService.GetEmployeeById(id.Value);
+				var employee = _employeeService.GetEmployeeById(id.Value);
                 return View(employee);
             }
             catch
