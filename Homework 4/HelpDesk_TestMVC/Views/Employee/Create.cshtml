@@ -1,0 +1,57 @@
+﻿@using HelpDesk_DomainModel.Models.Identity
+@using HelpDesk_TestMVC.Controllers
+@using HelpDesk_TestMVC.Enums
+@using System.Linq
+@model Employee;
+
+<h2>Create Employee</h2>
+
+<!--Form for adding employee-->
+@using (Html.BeginForm(
+			actionName: nameof(EmployeeController.Create),
+			controllerName: Html.ViewContext.RouteData.Values["controller"].ToString(),
+			FormMethod.Post))
+{
+	@Html.AntiForgeryToken()
+
+	<!-- Employee's first name -->
+	<div class="row">
+		<div class="col">
+			@Html.LabelFor(model => model.FirstName, new { @class = "form-label m-2" })
+			@Html.TextBoxFor(model => model.FirstName, new { @class = "form-control" })
+		</div>
+
+		<!-- Employee's last name -->
+		<div class="col">
+			@Html.LabelFor(model => model.LastName, new { @class = "form-label m-2" })
+			@Html.TextBoxFor(model => model.LastName, new { @class = "form-control" })
+		</div>
+	</div>
+
+	//Position
+	<div class="form-group">
+		@Html.LabelFor(model => model.Post, new { @class = "form-label m-2" })
+		@Html.DropDownListFor(model => model.Post,
+                Html.GetEnumSelectList<HelpDesk_TestMVC.Enums.PostEnum>(),
+				null,
+				new { @class = "form-select" })
+	</div>
+
+		//Eployee's skills
+	<div class="form-group">
+		@Html.LabelFor(model => model.Email, new { @class = "form-label m-2" })
+		@Html.TextAreaFor(model => model.Email, new { @class = "form-control" })
+	</div>
+
+	//Eployee's skills
+	<div class="form-group">
+		@Html.LabelFor(model => model.Skills, new { @class = "form-label m-2" })
+		@Html.TextAreaFor(model => model.Skills, new { @class = "form-control" })
+	</div>
+
+	//submit button
+	<div class="form-group">
+		<input type="submit" value="Create" class="btn btn-success m-2" />
+	</div>
+
+}
