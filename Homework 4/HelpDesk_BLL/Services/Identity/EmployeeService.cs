@@ -1,8 +1,6 @@
 ﻿using HelpDesk_BLL.Contracts.Identity;
 using HelpDesk_DAL;
 using HelpDesk_DomainModel.Models.Identity;
-using Microsoft.EntityFrameworkCore;
-using System.Linq;
 
 namespace HelpDesk_BLL.Services.Identity
 {
@@ -38,12 +36,12 @@ namespace HelpDesk_BLL.Services.Identity
 			return projectedQuery.ToList();
 		}
 
-		public async Task<Employee> GetEmployeeById(long employeeId)
+		public Employee? GetEmployeeById(long? employeeId)
 		{
 			var repo = _unitOfWork.GetRepository<Employee>();
 			
-			var employee = await repo.AsReadOnlyQueryable()
-				.FirstOrDefaultAsync(em => em.Id == employeeId);
+			var employee = repo.AsReadOnlyQueryable()
+				.FirstOrDefault(em => em.Id == employeeId);
 			
 			return employee;
 		}
@@ -72,7 +70,7 @@ namespace HelpDesk_BLL.Services.Identity
 		{
 			var repo = _unitOfWork.GetRepository<Employee>();
 
-			await repo.InsertOrUpdate(
+			repo.InsertOrUpdate(
 			employee => employee.Id == employeeToWrite.Id,
 			employeeToWrite
 			);

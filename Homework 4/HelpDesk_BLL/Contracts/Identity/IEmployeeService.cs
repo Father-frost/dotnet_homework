@@ -6,7 +6,7 @@ namespace HelpDesk_BLL.Contracts.Identity
 	{
 		public List<Employee> GetEmployees();
 
-		public Task<Employee?> GetEmployeeById(long employeeId);
+		public Employee GetEmployeeById(long? employeeId);
 		public Task<Employee> CreateEmployee(Employee employee);
 
 		public Task WriteEmployee(Employee employeeToWrite);

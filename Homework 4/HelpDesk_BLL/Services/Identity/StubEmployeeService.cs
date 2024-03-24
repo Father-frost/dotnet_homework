@@ -24,7 +24,7 @@ namespace HelpDesk_BLL.Services.Identity
 			return emptyList;
 		}
 
-		public async Task<Employee?> GetEmployeeById(long employeeId)
+		public Employee GetEmployeeById(long? employeeId)
 		{
 			throw new NotImplementedException();
 		}
