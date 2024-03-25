@@ -1,0 +1,59 @@
+﻿@using HelpDesk_DomainModel.Models.Identity
+@using HelpDesk_TestMVC.Controllers
+@using System.Linq
+@model Employee;
+
+<h2>Edit Employee</h2>
+
+<!--Form for editing employee-->
+@using (Html.BeginForm(
+					actionName: nameof(EmployeeController.Edit),
+					controllerName: Html.ViewContext.RouteData.Values["controller"].ToString(),
+					FormMethod.Post))
+{
+	@Html.AntiForgeryToken()
+
+	<!-- Employee's first name -->
+	<div class="row">
+		<div class="col">
+			@Html.LabelFor(m => m.FirstName, new { @class = "form-label m-2" })
+			@Html.TextBoxFor(m => m.FirstName, new { @class = "form-control" })
+		</div>
+
+		<!-- Employee's last name -->
+		<div class="col">
+			@Html.LabelFor(m => m.LastName, new { @class = "form-label m-2" })
+			@Html.TextBoxFor(m => m.LastName, new { @class = "form-control" })
+		</div>
+	</div>
+
+	//Position
+	<div class="form-group">
+		@Html.LabelFor(m => m.Post, new { @class = "form-label m-2" })
+		@Html.DropDownListFor(m => m.Post,
+				Html.GetEnumSelectList<PostEnum>(),
+				null,
+				new { @class = "form-select" })
+	</div>
+
+	//Eployee's email
+	<div class="form-group">
+		@Html.LabelFor(m => m.Email, new { @class = "form-label m-2" })
+		@Html.TextAreaFor(m => m.Email, new { @class = "form-control" })
+	</div>
+
+	//Eployee's skills
+	<div class="form-group">
+		@Html.LabelFor(m => m.Skills, new { @class = "form-label m-2" })
+		@Html.TextAreaFor(m => m.Skills, new { @class = "form-control" })
+	</div>
+
+	//submit button
+	<div class="form-group">
+		<input type="submit" value="Edit" class="btn btn-success m-2" />
+	</div>
+	<div class="form-group">
+		<a href="@Url.Action(nameof(EmployeeController.Index))" class="card-link">Back to list</a>
+	</div>
+
+}
