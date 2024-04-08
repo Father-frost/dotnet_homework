@@ -19,12 +19,14 @@
 		<div class="col">
 			@Html.LabelFor(model => model.FirstName, new { @class = "form-label m-2" })
 			@Html.TextBoxFor(model => model.FirstName, new { @class = "form-control" })
+			@Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
 		</div>
 
 		<!-- Employee's last name -->
 		<div class="col">
 			@Html.LabelFor(model => model.LastName, new { @class = "form-label m-2" })
 			@Html.TextBoxFor(model => model.LastName, new { @class = "form-control" })
+			@Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
 		</div>
 	</div>
 
@@ -41,6 +43,7 @@
 	<div class="form-group">
 		@Html.LabelFor(model => model.Email, new { @class = "form-label m-2" })
 		@Html.TextAreaFor(model => model.Email, new { @class = "form-control" })
+		@Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
 	</div>
 
 	//Eployee's skills
