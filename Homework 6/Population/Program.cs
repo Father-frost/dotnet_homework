@@ -30,13 +30,11 @@ namespace Population
 				name: "default",
 				pattern: "{controller=Home}/{action=Index}/{id?}");
 
-			app.UseEndpoints(endpoints =>
-			{
-				endpoints.MapControllerRoute(
-					name: "Cities",
-					pattern: "Cities/{country}/{*cities}",
-					defaults: new { controller = "Cities", Action = "GetPopulation" });
-			});
+			app.MapControllerRoute(
+						name: "Cities",
+						pattern: "country/{country}/{*cities}",
+						defaults: new { controller = "Country", Action = "GetPopulation" });
+
 
 			app.Run();
 		}
