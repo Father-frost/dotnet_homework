@@ -33,21 +33,26 @@ namespace Population.Controllers
 
 		public IActionResult GetPopulation(string country, string cities)
 		{
-			string[] citiesArray  = cities.Split('/');
-								
+			string[] citiesArray = Array.Empty<string>();
+
+			if (cities != null)
+			{
+				citiesArray = cities.Split('/');
+			}
+
 			var storedCity = new CityViewModel
 			{
-				City = "",	//All cities
-				Country = CountryEnum.China,
+				City = "",  //All cities
+				Country = "China",
 				Population = 1412000000,
 			};
 
 			Cities.Add(storedCity);
-			
+
 			storedCity = new CityViewModel
 			{
 				City = "Rome",
-				Country = CountryEnum.Italy,
+				Country = "Italy",
 				Population = 2873000,
 			};
 			Cities.Add(storedCity);
@@ -55,12 +60,45 @@ namespace Population.Controllers
 			storedCity = new CityViewModel
 			{
 				City = "Venice",
-				Country = CountryEnum.Italy,
+				Country = "Italy",
 				Population = 261900,
 			};
 			Cities.Add(storedCity);
 
-			return View();
+
+			var citiesForView = new List<CityViewModel>();
+
+			if (country != null)
+			{
+				if (citiesArray.Length != 0)
+				{
+					foreach (string city in citiesArray)
+					{
+						var ct = Cities.First(item => item.Country == country && item.City == city);
+						if (ct != null)
+						{
+							citiesForView.Add(ct);
+						}
+					}
+				}
+				else
+				{
+					var ct = Cities.First(item => item.Country == country);
+					if (ct != null)
+					{
+						citiesForView.Add(ct);
+					}
+				}
+			}
+
+			try
+			{
+				return View(citiesForView);
+			}
+			catch
+			{
+				return NotFound("No such record found!");
+			}
 		}
 	}
 }
