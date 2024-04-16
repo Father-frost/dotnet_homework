@@ -1,0 +1,24 @@
+﻿@using Population.Controllers
+
+@model List<CityViewModel>;
+
+
+<table class="table">
+	<thead>
+		<tr>
+			<th scope="col">City</th>
+			<th scope="col">Country</th>
+			<th scope="col">Population</th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (var m in Model)
+		{
+			<tr>
+				<td>@m.City</td>
+				<td>@m.Country</td>
+				<td>@m.Population</td>
+			</tr>
+		}
+	</tbody>
+</table>
