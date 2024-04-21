@@ -17,7 +17,39 @@ namespace Population.Controllers
 
 		public IActionResult Index()
 		{
-			return View();
+			var storedCity = new CityViewModel
+			{
+				City = "",  //All cities
+				Country = "China",
+				Population = 1412000000,
+			};
+
+			Cities.Add(storedCity);
+
+			storedCity = new CityViewModel
+			{
+				City = "Rome",
+				Country = "Italy",
+				Population = 2873000,
+			};
+			Cities.Add(storedCity);
+
+			storedCity = new CityViewModel
+			{
+				City = "Venice",
+				Country = "Italy",
+				Population = 261900,
+			};
+			Cities.Add(storedCity);
+
+			try
+			{
+				return View(Cities);
+			}
+			catch
+			{
+				return NotFound("No such record found!");
+			}
 		}
 
 		public IActionResult Privacy()
