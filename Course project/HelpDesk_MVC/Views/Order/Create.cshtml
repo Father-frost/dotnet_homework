@@ -1,0 +1,55 @@
+﻿@using HelpDesk_BLL.Contracts
+@using HelpDesk_DomainModel.Models
+@using HelpDesk_MVC.Controllers
+@using HelpDesk_MVC.Enums
+@using System.Linq
+@model OrderBriefModel;
+
+<h2>Create Order</h2>
+
+@using (Html.BeginForm(
+			actionName: nameof(OrderController.Create),
+			controllerName: Html.ViewContext.RouteData.Values["controller"].ToString(),
+			FormMethod.Post))
+{
+	@Html.AntiForgeryToken()
+
+	<div class="form-group">
+		@Html.LabelFor(model => model.OrderText, new { @class = "form-label m-2" })
+		@Html.TextAreaFor(model => model.OrderText, new { @class = "form-control" })
+		@Html.ValidationMessageFor(model => model.OrderText, "", new { @class = "text-danger" })
+	</div>
+	
+	<div class="form-group">
+		@Html.LabelFor(model => model.Address, new { @class = "form-label m-2" })
+		@Html.TextBoxFor(model => model.Address, new { @class = "form-control" })
+		@Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+	</div>
+	
+	<div class="form-group">
+		@Html.LabelFor(model => model.Phone, new { @class = "form-label m-2" })
+		@Html.TextBoxFor(model => model.Phone, new { @class = "form-control" })
+		@Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
+	</div>
+
+	<div class="row">
+		<div class="col">
+			@Html.LabelFor(model => model.MinCost, new { @class = "form-label m-2" })
+			@Html.TextBoxFor(model => model.MinCost, new { @class = "form-control" })
+			@Html.ValidationMessageFor(model => model.MinCost, "", new { @class = "text-danger" })
+		</div>
+
+		<!-- Employee's last name -->
+		<div class="col">
+			@Html.LabelFor(model => model.MaxCost, new { @class = "form-label m-2" })
+			@Html.TextBoxFor(model => model.MaxCost, new { @class = "form-control" })
+			@Html.ValidationMessageFor(model => model.MaxCost, "", new { @class = "text-danger" })
+		</div>
+	</div>
+
+	//submit button
+	<div class="form-group">
+		<input type="submit" value="Create" class="btn btn-success m-2" />
+	</div>
+
+}
